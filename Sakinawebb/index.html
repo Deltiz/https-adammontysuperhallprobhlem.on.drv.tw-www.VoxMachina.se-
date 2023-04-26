@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vox Machina</title>
+    <link rel="stylesheet" href="Style/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+ <br>
+   
+    <div class="container-fluid">
+        <div class="flex-container">
+            <div class="sidebar">
+                <header>
+                    <div class="icon">
+                        <img src="img/shop.png" alt="">
+                    </div>
+                    <div class="vayuleft-container">
+                        <img class="vayuleft" src="img/VayuLeft.webp" alt="">
+                    </div>
+                </header>
+                <div class="menu">
+                    <a href="https://vayuvaruna.se/wakeboard/">WakeBoards</a>
+                    <a href="https://vayuvaruna.se/">Kontakta oss!</a>
+                    <a href="">Om Adam</a>
+                </div>
+                <div id="scoreBoard" style="position: fixed; top: 10px; right: 10px; font-size: 24px;">Score: 0</div>
+            </div>
+            
+            <div class="col-lg-8 col-md-9 col-10 p-0 content-wrapper ">
+                <div class="row">
+                    <div class="col-md-15 p-0 ">
+                        <div class="vayu-image-container">
+                            <img src="img/Vayu.webp" alt="Bild på kitesurfrare bland vågor main bild" class="img-fluid my-3">
+                        </div>
+                </div>
+                <div class="row" id="test">
+                    <div class="col-lg-4 col-md-4 col-12 p-0 image-container">
+                        <img src="img/fakeadamleft.png" alt="hoppande surfer" class="img-fluid my-1">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 p-0 image-container middle-image">
+                        <img src="img/fakeadam3.png" alt="voltande man på surfbräda" class="img-fluid my-1">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12 p-0 image-container">
+                        <img src="img/fakeAdam.png" alt="right picutre with text and kite" class="img-fluid my-1">    
+                    </div>   
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12  col-12 text-center custom-centered-text">
+            <h2>Välkommen till Vox Machina!</h2>
+            <p>Snart lanseras Skandinaviens nya ehandel för Kitesurf & Wakeboard.</p>
+            <p>Håll dig uppdaterad genom att <i>följa "Kite is cool"</i> på instagram</p>
+            <strong>@Vox Machina</strong>
+        </div>
+    </div>
+    <br>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript">
+/*
+function playBubbleSound() {
+    const bubbleSound = document.getElementById("bubble-sound");
+    bubbleSound.currentTime = 0;
+    bubbleSound.play();
+}
+*/
+function playPopSound() {
+    const popSound = document.getElementById("pop-sound");
+    popSound.currentTime = 0;
+    popSound.play();
+}
+
+    function createBubble(){
+        const section = document.querySelector("body")
+        const createElement = document.createElement("span");
+        var size = Math.random() *60;
+
+        createElement.style.width = 20+ size + 'px';
+        createElement.style.height =20+ size + 'px';
+        createElement.style.left = Math.random() * innerWidth + 'px';
+        section.appendChild(createElement);
+        createElement.addEventListener("click", () => {
+            playPopSound();
+            score++;
+            updateScoreBoard();
+            createElement.remove();
+            
+        });
+        setTimeout(()=>{
+            createElement.remove();
+        },4000)
+    }
+    let score = 0;
+    const scoreBoard = document.getElementById("scoreBoard");
+
+    function updateScoreBoard() {
+        scoreBoard.textContent = "Score: " + score;
+    }
+    
+    createBubble();
+    setInterval(createBubble,50);
+    document.addEventListener("click", (event) => {
+        if (!event.target.matches("span")) {
+            score = 0;
+            updateScoreBoard();
+        }
+    });
+
+
+
+    </script>
+ <audio id="bubble-sound" src="/pop.mp3" preload="auto"></audio>
+ <audio id="pop-sound" src="/pop.mp3" preload="auto"></audio>
+</body>
+</html>
